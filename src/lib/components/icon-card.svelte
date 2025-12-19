@@ -1,20 +1,18 @@
 <script lang="ts">
   import { type Icon as IconType } from "lucide-svelte";
-  import { Card } from "./ui/card";
   import { Badge } from "./ui/badge";
   import gsap from "gsap";
-  import { onMount } from "svelte";
+  import { type Snippet } from "svelte";
 
   interface Props {
     icon: IconType;
     title: string;
     description: string;
-    badgeLabel: String;
+    badgeLabel?: string | Snippet;
   }
   let { icon, title, description, badgeLabel }: Props = $props();
 
   let card: HTMLDivElement;
-  onMount(() => {});
   function animate(animIn: boolean) {
     const toValue = animIn ? -10 : 0;
 
@@ -46,19 +44,25 @@
 >
   {#if icon}
     {@const Icon = icon}
-    <div class="bg-muted w-fit h-fit p-4 rounded-full">
-      <Icon class="size-5 text-muted-foreground" />
+    <div class="bg-accent w-fit h-fit p-4 rounded-full">
+      <Icon class="size-5 text-accent-foreground" />
     </div>
   {/if}
 
   <div class="flex justify-between gap-7">
     <p class="text-xl font-bold tracking-wider">{title}</p>
-    <Badge
-      class="rounded-sm border-b-3 px-3.5 tracking-wider h-6.5"
-      variant="outline"
-    >
-      {badgeLabel}
-    </Badge>
+    {#if badgeLabel}
+      <Badge
+        class="rounded-sm border-b-3 px-3.5 tracking-wider h-6.5"
+        variant="outline"
+      >
+        {#if typeof badgeLabel === "string"}
+          {badgeLabel}
+        {:else}
+          {@render badgeLabel()}
+        {/if}
+      </Badge>
+    {/if}
   </div>
 
   <p class="font-light text-muted-foreground tracking-wider mb-8">
