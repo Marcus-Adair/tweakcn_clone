@@ -29,6 +29,7 @@
   import { MAX_WIDTH_CLASS } from "$lib/consts";
   import AnimatedCircle from "$lib/components/animated-circle.svelte";
   import CssGrid from "$lib/components/CssGrid.svelte";
+  import ThemeButton from "$lib/components/theme-button.svelte";
 
   let visualThemeEditor: HTMLDivElement;
   let themePresets: HTMLDivElement;
@@ -178,6 +179,7 @@
     />
 
     <!-- TODO: add animated theme switcher thing -->
+    <ThemeButton />
 
     <!-- TODO: add email thing -->
   </div>
