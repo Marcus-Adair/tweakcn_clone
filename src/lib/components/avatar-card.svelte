@@ -40,7 +40,12 @@
   tabindex={0}
 >
   <div class="flex items-center gap-4">
-    <div class="h-10.5 w-10.5 bg-primary rounded-full"></div>
+    <!-- <div class="h-10.5 w-10.5 bg-primary rounded-full"></div> -->
+    <img
+      class="h-10.5 w-10.5 rounded-full"
+      src={`https://robohash.org/${handle}.png?set=set1&bgset=bg1`}
+      alt="avatar"
+    />
     <div class="flex flex-col">
       <span class="text-lg font-medium tracking-wider">{name}</span>
       <span class="text-muted-foreground -translate-y-1 text-sm">@{handle}</span
@@ -48,7 +53,7 @@
     </div>
   </div>
 
-  <p class="font-light text-muted-foreground tracking-wider text-sm mb-8">
+  <p class="font-light text-muted-foreground tracking-wider text-sm mb-6 mt-8">
     {tweet}
   </p>
 </div>

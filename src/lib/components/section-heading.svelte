@@ -9,13 +9,13 @@
   let { label, title, subtitle }: Props = $props();
 </script>
 
-<div class="flex flex-col items-center gap-3">
+<div class="flex flex-col items-center gap-6 z-20">
   <SectionBadge {label} />
-  <h2 class="text-3xl font-bold tracking-tight text-center">
+  <h2 class="text-4xl font-bold tracking-tight text-center">
     {title}
   </h2>
   <span
-    class="text-lg font-light text-muted-foreground tracking-tight mt-1 text-center"
+    class="text-xl tracking-wide font-light text-muted-foreground text-center"
   >
     {subtitle}
   </span>

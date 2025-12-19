@@ -7,7 +7,7 @@
 <footer class="flex justify-center">
   <div
     class={cn(
-      "py-3 px-5 flex flex-col gap-2 text-sm mt-12 w-full",
+      "py-3 px-8 flex flex-col gap-2 text-sm mt-12 w-full",
       MAX_WIDTH_CLASS
     )}
   >

@@ -27,6 +27,8 @@
   import AvatarCard from "$lib/components/avatar-card.svelte";
   import { cn } from "$lib/utils";
   import { MAX_WIDTH_CLASS } from "$lib/consts";
+  import AnimatedCircle from "$lib/components/animated-circle.svelte";
+  import CssGrid from "$lib/components/CssGrid.svelte";
 
   let visualThemeEditor: HTMLDivElement;
   let themePresets: HTMLDivElement;
@@ -43,13 +45,12 @@
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const BASE_SCROLL_TRIGGER = { start: "top+=20px bottom" };
+    const BASE_SCROLL_TRIGGER = { start: "top+=45px bottom" };
     const BASE_FADE_IN_ANIMATION = {
       opacity: 0,
       duration: 0.85,
       ease: "power1.inOut",
     };
-
     [
       visualThemeEditor,
       themePresets,
@@ -59,6 +60,7 @@
       roadmap,
       faq,
     ].forEach((divElt) => {
+      // ScrollTrigger heading fade in animation
       gsap.from(divElt, {
         scrollTrigger: {
           trigger: divElt,
@@ -68,23 +70,19 @@
       });
     });
 
+    // Infinite Row animations
+    const LOOP_DURATION = 70;
     loopTween1 = gsap.to(infiniteRow1, {
       x: -1504, // length in px of real avatar-cards
-      duration: 60,
+      duration: LOOP_DURATION,
       repeat: -1,
       ease: "linear",
-      // modifiers: {
-      //   x: gsap.utils.unitize((x) => parseFloat(x) % 376),
-      // },
     });
     loopTween2 = gsap.to(infiniteRow2, {
       x: 1504, // length in px of real avatar-cards
-      duration: 60,
+      duration: LOOP_DURATION,
       repeat: -1,
       ease: "linear",
-      modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % 376),
-      },
     });
   });
   const pauseLoop1 = () => {
@@ -189,7 +187,7 @@
     <SectionHeading
       label="Testimonials"
       title="Loved by developers worldwide"
-      subtitle="See what the community is saying about tweakcn"
+      subtitle="See what the community is saying about tweakcn_clone"
     />
   </div>
 
@@ -199,8 +197,8 @@
   -->
 
   <div class="flex justify-center">
-    <div class="flex flex-col">
-      <div class={"relative overflow-hidden w-280"}>
+    <div class="flex flex-col relative">
+      <div class={"relative overflow-hidden max-w-280"}>
         <div
           bind:this={infiniteRow1}
           id="infiniteRow1"
@@ -272,7 +270,6 @@
         </div>
 
         <!-- Fade the sides -->
-
         <!-- <div
           class="pointer-events-none absolute top-0 right-0 h-full w-20 bg-linear-to-l from-background to-transparent"
         ></div>
@@ -281,64 +278,68 @@
         ></div> -->
       </div>
       <!-- 2nd row -->
-      <div class={"relative overflow-hidden w-280"}>
+      <div class={"relative overflow-hidden max-w-280"}>
         <!-- Clones -->
-        <div bind:this={infiniteRow2} id="infiniteRow2" class="flex w-752 pb-6">
+        <div
+          bind:this={infiniteRow2}
+          id="infiniteRow2"
+          class="flex w-752 pb-6 -translate-x-376"
+        >
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Bob Jimmy"
+            handle="user123473"
+            tweet="I just visited tweakcn_clone and seems like you nailed it. I will definitely try out tweakcn."
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Sierra Warren"
+            handle="high_sierra"
+            tweet="Tweakcn is really cool. Custom shadcn themes on the fly."
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Tim Goldenlock"
+            handle="timmyg"
+            tweet="Used this shadcn theme editor for a little less pain: tweakcn.com"
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="SharkDev"
+            handle="thesharkdevfake"
+            tweet="GSAP provides some awesome animations! That is what is being using in combination with actual tweakcn themes"
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <!-- ------------------------------------------------------------------- -->
           <!-- Real -->
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Bob Jimmy"
+            handle="user123473"
+            tweet="I just visited tweakcn_clone and seems like you nailed it. I will definitely try out tweakcn."
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Sierra Warren"
+            handle="high_sierra"
+            tweet="Tweakcn is really cool. Custom shadcn themes on the fly."
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="Tim Goldenlock"
+            handle="timmyg"
+            tweet="Used this shadcn theme editor for a little less pain: tweakcn.com"
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
           <AvatarCard
-            name="shadcn"
-            handle="shadcn"
-            tweet="This is a decriptions fsdaa .. sTODTO "
+            name="SharkDev"
+            handle="thesharkdevfake"
+            tweet="GSAP provides some awesome animations! That is what is being using in combination with actual tweakcn themes"
             pauseLoop={pauseLoop2}
             resumeLoop={resumeLoop2}
           />
@@ -346,13 +347,12 @@
       </div>
 
       <!-- Fade the sides -->
-
-      <!-- <div
-        class="pointer-events-none absolute top-0 right-0 h-full w-20 bg-linear-to-l from-background to-transparent"
+      <div
+        class="pointer-events-none absolute top-0 right-0 h-full w-16 bg-linear-to-l from-background to-transparent"
       ></div>
       <div
-        class="pointer-events-none absolute top-0 right-left h-full w-20 bg-linear-to-l from-transparent to-background"
-      ></div> -->
+        class="pointer-events-none absolute top-0 right-left h-full w-16 bg-linear-to-l from-transparent to-background"
+      ></div>
     </div>
   </div>
 </div>
@@ -410,16 +410,41 @@
 </div>
 
 <!-- How it works -->
-<div bind:this={howItWorks} class="mt-64 px-10 flex flex-col items-center">
+<div
+  bind:this={howItWorks}
+  class={cn("mt-64 px-10 flex flex-col items-center relative py-24 pb-8")}
+>
+  <CssGrid />
+
   <SectionHeading
     label="How It Works"
     title="Simple Process, Beautiful Results"
     subtitle="Customize your shadcn/ui components in just a few simple steps."
   />
+
+  <div class="flex items-center mt-16">
+    <div class={cn("flex gap-10", MAX_WIDTH_CLASS)}>
+      <AnimatedCircle
+        numLabel="01"
+        title="Select Theme Preset"
+        description="Choose the theme you want to customize from our growing library."
+      />
+      <AnimatedCircle
+        numLabel="02"
+        title="Customize Visually"
+        description="Use our intuitive interface to adjust colors, dimensions, typography, and other properties."
+      />
+      <AnimatedCircle
+        numLabel="03"
+        title="Copy Code"
+        description="Copy the generated Tailwind CSS code directly into your project."
+      />
+    </div>
+  </div>
 </div>
 
 <div bind:this={roadmap} id="roadmap">
-  <div class="mt-64 px-10 flex flex-col items-center">
+  <div class="mt-60 px-10 flex flex-col items-center">
     <SectionHeading
       label="Roadmap"
       title="What's Coming Next"
@@ -478,34 +503,42 @@
 <FAQ bind:faq />
 
 <div
-  class="w-full h-auto bg-slate-400 font-semibold text-center px-4 py-30 flex flex-col gap-8"
+  class="w-full h-auto font-semibold text-center px-4 py-30 flex flex-col gap-8 relative"
 >
-  <p class="text-5xl text-primary-foreground font-bold tracking-tight">
-    Ready to Make Your Components Stand Out?
-  </p>
-  <span
-    class="text-lg font-light text-primary-foreground tracking-tight mt-1 text-center"
-  >
-    Start customizing your shadcn/ui components today and create a unique look
-    for your application.
-  </span>
+  <CssGrid alt />
 
-  <div class="flex gap-4 mt-5 justify-center">
-    <Button size="xl" class="hover:-translate-y-1 ease-in-out duration-200">
-      Try It Now<ArrowRight class="size-4.5 ml-2" />
-    </Button>
-    <Button
-      size="xl"
-      variant="outline"
-      class="hover:-translate-y-1 ease-in-out duration-200 bg-transparent text-primary-foreground"
+  <div class="flex flex-col gap-8 z-20">
+    <!-- <div class="z-20"> -->
+    <p class="text-5xl text-primary-foreground font-bold tracking-tight">
+      Ready to Make Your Components Stand Out?
+    </p>
+    <span
+      class="text-lg font-light text-primary-foreground tracking-tight mt-1 text-center"
     >
-      View on GitHub
-    </Button>
-  </div>
+      Start customizing your shadcn/ui components today and create a unique look
+      for your application.
+    </span>
 
-  <span class="text-primary-foreground text-sm font-light">
-    No login required. Free to use. Open source.
-  </span>
+    <div class="flex gap-4 mt-5 justify-center">
+      <Button
+        variant="secondary"
+        size="xl"
+        class="hover:-translate-y-1 ease-in-out duration-200"
+      >
+        Try It Now<ArrowRight class="size-4.5 ml-2" />
+      </Button>
+      <Button
+        size="xl"
+        class="hover:-translate-y-1 ease-in-out duration-200 bg-transparent border border-primary-foreground"
+      >
+        View on GitHub
+      </Button>
+    </div>
+
+    <span class="text-primary-foreground text-sm font-light tracking-wide">
+      No login required. Free to use. Open source.
+    </span>
+  </div>
 </div>
 
 <!-- Snippets -->

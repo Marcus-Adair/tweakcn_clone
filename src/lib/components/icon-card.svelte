@@ -15,6 +15,7 @@
   let card: HTMLDivElement;
   function animate(animIn: boolean) {
     const toValue = animIn ? -10 : 0;
+    const scaleValue = animIn ? 1.01 : 1;
 
     const toBoxShadow = animIn
       ? "0px 12px 30px rgba(0,0,0,0.05)"
@@ -23,6 +24,11 @@
     const DURATION = 0.25;
     gsap.to(card, {
       y: toValue,
+      duration: DURATION,
+      ease: "power1.inOut",
+    });
+    gsap.to(card, {
+      scale: scaleValue,
       duration: DURATION,
       ease: "power1.inOut",
     });
