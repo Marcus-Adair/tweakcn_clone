@@ -9,7 +9,7 @@
   let { label, title, subtitle }: Props = $props();
 </script>
 
-<div class="flex flex-col items-center gap-6 z-20">
+<div class="flex flex-col items-center gap-6 z-10">
   <SectionBadge {label} />
   <h2 class="text-4xl font-bold tracking-tight text-center">
     {title}

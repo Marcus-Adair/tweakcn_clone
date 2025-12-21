@@ -30,6 +30,8 @@
   import AnimatedCircle from "$lib/components/animated-circle.svelte";
   import CssGrid from "$lib/components/CssGrid.svelte";
   import ThemeButton from "$lib/components/theme-button.svelte";
+  import type { Theme } from "$lib/types";
+  import InfiniteThemeButtons from "$lib/components/infinite-theme-buttons.svelte";
 
   let visualThemeEditor: HTMLDivElement;
   let themePresets: HTMLDivElement;
@@ -178,9 +180,7 @@
       look."
     />
 
-    <!-- TODO: add animated theme switcher thing -->
-    <ThemeButton />
-
+    <InfiniteThemeButtons />
     <!-- TODO: add email thing -->
   </div>
 
@@ -193,14 +193,9 @@
     />
   </div>
 
-  <!-- 
-  overflow-hidden 
-  gap-4 p-6 
-  -->
-
   <div class="flex justify-center">
     <div class="flex flex-col relative">
-      <div class={"relative overflow-hidden max-w-280"}>
+      <div class={"overflow-hidden max-w-280"}>
         <div
           bind:this={infiniteRow1}
           id="infiniteRow1"
@@ -270,14 +265,6 @@
             resumeLoop={resumeLoop1}
           />
         </div>
-
-        <!-- Fade the sides -->
-        <!-- <div
-          class="pointer-events-none absolute top-0 right-0 h-full w-20 bg-linear-to-l from-background to-transparent"
-        ></div>
-        <div
-          class="pointer-events-none absolute top-0 right-left h-full w-20 bg-linear-to-l from-transparent to-background"
-        ></div> -->
       </div>
       <!-- 2nd row -->
       <div class={"relative overflow-hidden max-w-280"}>
@@ -424,7 +411,7 @@
     subtitle="Customize your shadcn/ui components in just a few simple steps."
   />
 
-  <div class="flex items-center mt-16">
+  <div class="flex items-center mt-22 mb-34">
     <div class={cn("flex gap-10", MAX_WIDTH_CLASS)}>
       <AnimatedCircle
         numLabel="01"

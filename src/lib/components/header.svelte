@@ -102,13 +102,15 @@
   });
 </script>
 
-<header class="flex justify-center">
+<header
+  class={cn("flex justify-center sticky top-0 bg-background z-100", {
+    "border-b border-border shadow-sm": !atTop,
+  })}
+>
   <div
     class={cn(
-      "sticky top-0 bg-background py-4 px-26 flex items-center w-full transition-shadow z-60 w-full",
-      {
-        "border-b border-border shadow-sm": !atTop,
-      },
+      "py-4 px-26 flex items-center w-full transition-shadow z-60",
+
       MAX_WIDTH_CLASS
     )}
   >

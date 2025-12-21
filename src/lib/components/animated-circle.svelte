@@ -14,7 +14,7 @@
   let animatedCircleDiv: HTMLDivElement;
   onMount(() => {
     const DURATION = 2.5;
-    const REPEAT_DELAY = 2.2;
+    const REPEAT_DELAY = 1.6;
     gsap.from(animatedCircleDiv, {
       scale: 0.2,
       duration: DURATION,
@@ -53,10 +53,10 @@
     ></div>
   </div>
 
-  <span class="font-bold text-lg mt-11">{title}</span>
+  <span class="font-bold text-lg mt-11 z-40">{title}</span>
 
   <span
-    class="max-w-95 mt-1 text-center text-muted-foreground font-light leading-5.5"
+    class="max-w-95 mt-1 text-center text-muted-foreground font-light leading-5.5 z-40"
     >{description}</span
   >
 </div>
