@@ -88,16 +88,7 @@
   <div class="overflow-hidden max-w-280 flex flex-col relative">
     <div bind:this={infiniteRow1} class="flex mt-17 w-588 pb-6">
       <!-- Real -->
-      <ThemeButton
-        name="Default"
-        theme="default"
-        onclick={() => {
-          currentTheme = "default";
-        }}
-        current={currentTheme === "default"}
-        onmouseenter={() => pauseLoop1()}
-        onmouseleave={() => resumeLoop1()}
-      />
+
       <ThemeButton
         name="Bold Tech"
         theme="bold-tech"
@@ -129,46 +120,47 @@
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Nature"
+        theme="nature"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "nature";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "nature"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Claude"
+        theme="claude"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "claude";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "claude"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Doom 64"
+        theme="doom-64"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "doom-64";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "doom-64"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
+      <ThemeButton
+        name="Bubblegum"
+        theme="bubblegum"
+        onclick={() => {
+          currentTheme = "bubblegum";
+        }}
+        current={currentTheme === "bubblegum"}
+        onmouseenter={() => pauseLoop1()}
+        onmouseleave={() => resumeLoop1()}
+      />
+
       <!-- Clone -->
-      <ThemeButton
-        name="Default"
-        theme="default"
-        onclick={() => {
-          currentTheme = "default";
-        }}
-        current={currentTheme === "default"}
-        onmouseenter={() => pauseLoop1()}
-        onmouseleave={() => resumeLoop1()}
-      />
       <ThemeButton
         name="Bold Tech"
         theme="bold-tech"
@@ -180,197 +172,208 @@
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Default 2"
-        theme="default"
+        name="Caffeine"
+        theme="caffeine"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "caffeine";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "caffeine"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Notebook"
+        theme="notebook"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "notebook";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "notebook"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Nature"
+        theme="nature"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "nature";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "nature"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Claude"
+        theme="claude"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "claude";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "claude"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Doom 64"
+        theme="doom-64"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "doom-64";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "doom-64"}
+        onmouseenter={() => pauseLoop1()}
+        onmouseleave={() => resumeLoop1()}
+      />
+      <ThemeButton
+        name="Bubblegum"
+        theme="bubblegum"
+        onclick={() => {
+          currentTheme = "bubblegum";
+        }}
+        current={currentTheme === "bubblegum"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />
     </div>
 
+    <!-- Row 2 -->
     <div bind:this={infiniteRow2} class="flex w-588 pb-6">
       <!-- Real -->
       <ThemeButton
-        name="Default"
-        theme="default"
+        name="Clean Slate"
+        theme="clean-slate"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "clean-slate";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "clean-slate"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech"
-        theme="bold-tech"
+        name="Dark Matter"
+        theme="dark-matter"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "dark-matter";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "dark-matter"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 2"
-        theme="default"
+        name="Mocha"
+        theme="mocha"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "mocha";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "mocha"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Kodama"
+        theme="kodama"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "kodama";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "kodama"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Perpetuity"
+        theme="perpetuity"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "perpetuity";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "perpetuity"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Cyberpunk"
+        theme="cyberpunk"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "cyberpunk";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "cyberpunk"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Mono"
+        theme="mono"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "mono";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "mono"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <!-- Clone -->
       <ThemeButton
-        name="Default"
-        theme="default"
+        name="Clean Slate"
+        theme="clean-slate"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "clean-slate";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "clean-slate"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech"
-        theme="bold-tech"
+        name="Dark Matter"
+        theme="dark-matter"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "dark-matter";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "dark-matter"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 2"
-        theme="default"
+        name="Mocha"
+        theme="mocha"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "mocha";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "mocha"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Kodama"
+        theme="kodama"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "kodama";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "kodama"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Perpetuity"
+        theme="perpetuity"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "perpetuity";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "perpetuity"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Cyberpunk"
+        theme="cyberpunk"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "cyberpunk";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "cyberpunk"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Mono"
+        theme="mono"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "mono";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "mono"}
         onmouseenter={() => pauseLoop2()}
         onmouseleave={() => resumeLoop2()}
       />
@@ -379,143 +382,143 @@
     <div bind:this={infiniteRow3} class="flex w-588 pb-6">
       <!-- Real -->
       <ThemeButton
-        name="Default"
-        theme="default"
+        name="T3 Chat"
+        theme="t3-chat"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "t3-chat";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "t3-chat"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech"
-        theme="bold-tech"
+        name="Vercel"
+        theme="vercel"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "vercel";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "vercel"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 2"
-        theme="default"
+        name="Soft Pop"
+        theme="soft-pop"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "soft-pop";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "soft-pop"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Twitter"
+        theme="twitter"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "twitter";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "twitter"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Tangerine"
+        theme="tangerine"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "tangerine";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "tangerine"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Vintage"
+        theme="vintage"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "vintage";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "vintage"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Modern"
+        theme="modern"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "modern";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "modern"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <!-- Clone -->
       <ThemeButton
-        name="Default"
-        theme="default"
+        name="T3 Chat"
+        theme="t3-chat"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "t3-chat";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "t3-chat"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech"
-        theme="bold-tech"
+        name="Vercel"
+        theme="vercel"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "vercel";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "vercel"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 2"
-        theme="default"
+        name="Soft Pop"
+        theme="soft-pop"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "soft-pop";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "soft-pop"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Twitter"
+        theme="twitter"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "twitter";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "twitter"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 3"
-        theme="default"
+        name="Tangerine"
+        theme="tangerine"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "tangerine";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "tangerine"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Bold Tech 3"
-        theme="bold-tech"
+        name="Vintage"
+        theme="vintage"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "vintage";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "vintage"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
       <ThemeButton
-        name="Default 4"
-        theme="default"
+        name="Modern"
+        theme="modern"
         onclick={() => {
-          currentTheme = "default";
+          currentTheme = "modern";
         }}
-        current={currentTheme === "default"}
+        current={currentTheme === "modern"}
         onmouseenter={() => pauseLoop3()}
         onmouseleave={() => resumeLoop3()}
       />
