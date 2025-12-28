@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { type Icon as IconType } from "lucide-svelte";
+  import { type Icon } from "lucide-svelte";
   import { Badge } from "./ui/badge";
   import gsap from "gsap";
   import { type Snippet } from "svelte";
 
   interface Props {
-    icon: IconType;
+    icon: typeof Icon;
     title: string;
     description: string;
     badgeLabel?: string | Snippet;

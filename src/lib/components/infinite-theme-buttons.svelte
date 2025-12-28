@@ -119,12 +119,12 @@
         onmouseleave={() => resumeLoop1()}
       />
       <ThemeButton
-        name="Bold Tech 2"
-        theme="bold-tech"
+        name="Notebook"
+        theme="notebook"
         onclick={() => {
-          currentTheme = "bold-tech";
+          currentTheme = "notebook";
         }}
-        current={currentTheme === "bold-tech"}
+        current={currentTheme === "notebook"}
         onmouseenter={() => pauseLoop1()}
         onmouseleave={() => resumeLoop1()}
       />

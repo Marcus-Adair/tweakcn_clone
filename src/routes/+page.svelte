@@ -1,17 +1,17 @@
 <script lang="ts">
   import FAQ from "$lib/components/faq.svelte";
   import IconCard from "$lib/components/icon-card.svelte";
-  import SectionBadge from "$lib/components/section-badge.svelte";
   import SectionHeading from "$lib/components/section-heading.svelte";
   import { Button } from "$lib/components/ui/button";
   import {
     ArrowRight,
     ArrowRightLeft,
     BrainCircuit,
-    Check,
     Circle,
     Code,
     Contrast,
+    Copy,
+    Eye,
     FileCode,
     Folder,
     Gem,
@@ -19,6 +19,10 @@
     Layers,
     Paintbrush,
     Palette,
+    RefreshCcw,
+    SlidersHorizontal,
+    SquarePen,
+    Star,
     Users,
   } from "lucide-svelte";
   import gsap from "gsap";
@@ -26,17 +30,20 @@
   import { onMount } from "svelte";
   import AvatarCard from "$lib/components/avatar-card.svelte";
   import { cn } from "$lib/utils";
-  import { MAX_WIDTH_CLASS } from "$lib/consts";
+  import { ABSOLUTE_CENTER_CLASS, MAX_WIDTH_CLASS } from "$lib/consts";
   import AnimatedCircle from "$lib/components/animated-circle.svelte";
   import CssGrid from "$lib/components/CssGrid.svelte";
-  import ThemeButton from "$lib/components/theme-button.svelte";
-  import type { Theme } from "$lib/types";
   import InfiniteThemeButtons from "$lib/components/infinite-theme-buttons.svelte";
+  import CheckmarkSection from "$lib/components/checkmark-section.svelte";
+  import { ScrollArea } from "$lib/components/ui/scroll-area";
+  import EmailInbox from "$lib/components/email-inbox.svelte";
+  import ChartLine1 from "$lib/components/chart-line-1.svelte";
 
   let visualThemeEditor: HTMLDivElement;
   let themePresets: HTMLDivElement;
   let testimonials: HTMLDivElement;
   let features: HTMLDivElement;
+  let proFeatures: HTMLDivElement;
   let howItWorks: HTMLDivElement;
   let roadmap: HTMLDivElement;
   let faq: HTMLDivElement;
@@ -118,60 +125,31 @@
   };
 </script>
 
-<div id="examples" class="px-32">
-  <!-- Visual Theme Editor -->
+<div id="examples" class="">
   <div class="flex justify-center">
-    <div bind:this={visualThemeEditor} class="mt-34 px-10 flex flex-col gap-4">
-      <SectionBadge label="Visual Theme Editor" />
+    <div class={cn("flex grow items-center px-14", MAX_WIDTH_CLASS)}>
+      <CheckmarkSection
+        bind:divElt={visualThemeEditor}
+        badgeLabel="Visual Theme Editor"
+        title={VisThemEditorTitle}
+        subtitle="Customize colors, typography, and layouts with a real-time preview. No signup required."
+        btn1Label="Start Customizing"
+        btn2Label="View Examples"
+        check1Str="Real-time Preview"
+        check2Str="Export to Tailwind"
+        check3Str="Beautiful Presets"
+      />
 
-      <h1 class="text-5xl font-extrabold tracking-tight">
-        Design Your <span class="italic font-light">Perfect</span>
-        <Circle class="inline size-13" /> shadcn/ui Theme
-      </h1>
-
-      <span
-        class="text-lg font-light text-muted-foreground tracking-tight mt-1"
-      >
-        Customize colors, typography, and layouts with a real-time preview. No
-        signup required.
-      </span>
-
-      <div class="flex gap-4 mt-5">
-        <Button
-          size="xl"
-          class="hover:-translate-y-1 ease-in-out duration-200"
-          href="https://tweakcn.com/editor/theme"
-          target="_blank"
-        >
-          Start Customizing <ArrowRight class="size-4.5 ml-2" />
-        </Button>
-        <Button
-          size="xl"
-          variant="outline"
-          class="hover:-translate-y-1 ease-in-out duration-200"
-        >
-          View Examples
-        </Button>
-      </div>
-
-      <div class="flex gap-5.5 text-sm text-muted-foreground mt-4">
-        <div class="flex gap-1.5 items-center">
-          <Check class="text-muted-foreground size-5" /> Real-time Preview
-        </div>
-        <div class="flex gap-1.5 items-center">
-          <Check class="text-muted-foreground size-5" /> Export to Tailwind
-        </div>
-        <div class="flex gap-1.5 items-center">
-          <Check class="text-muted-foreground size-5" /> Beautiful Presets
-        </div>
-      </div>
+      {@render ColorPaletteThing()}
     </div>
   </div>
+
+  <!-- Visual Theme Editor -->
 
   <!-- Theme presets -->
   <div
     bind:this={themePresets}
-    class="mt-64 px-10 flex flex-col items-center animate-in-section"
+    class={"mt-64 flex flex-col items-center animate-in-section"}
   >
     <SectionHeading
       label="Theme Presets"
@@ -181,11 +159,77 @@
     />
 
     <InfiniteThemeButtons />
-    <!-- TODO: add email thing -->
+
+    <div class="w-screen p-4 flex sm:hidden mt-10">
+      <div
+        class="flex flex-col w-full gap-4 border border-border rounded-lg p-4 shadow-xl"
+      >
+        <ChartLine1
+          topDescription="Total Revenue"
+          title="$15,231.89"
+          subtitle="+20.1% from last month"
+        />
+        <ChartLine1
+          topDescription="Subscriptions"
+          title="+2,350"
+          subtitle="+180.1% from last month"
+        />
+      </div>
+    </div>
+
+    <div
+      class="flex-col gap-4 border border-border rounded-lg p-4 bg-card hidden sm:flex lg:hidden mt-6 mb-0 shadow-xl"
+    >
+      <div class="flex gap-4 w-170">
+        <ChartLine1
+          topDescription="Total Revenue"
+          title="$15,231.89"
+          subtitle="+20.1% from last month"
+        />
+        <ChartLine1
+          topDescription="Subscriptions"
+          title="+2,350"
+          subtitle="+180.1% from last month"
+        />
+      </div>
+
+      <div
+        class="flex flex-col justify-between gap-4 border border-border p-4 rounded-lg"
+      >
+        <div class="flex justify-between">
+          <div class="flex flex-col gap-2 max-w-137">
+            <span>tweakcn_clone</span>
+            <span
+              >A copy of the front-end website for a visual editor for shadcn/ui
+              components with beautiful themes. Open Source.</span
+            >
+          </div>
+
+          <Button variant="secondary" class="rounded-sm"><Star />Star</Button>
+        </div>
+
+        <div class="flex gap-8 items-center text-sm text-muted-foreground">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-blue-400"></div>
+            <span>TypeScript</span>
+          </div>
+
+          <div class="flex items-center gap-1">
+            <Star class="size-4" />
+            <span>20k</span>
+          </div>
+          <span> Updated December 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class={cn("w-full max-w-280 hidden lg:flex")}>
+      <EmailInbox />
+    </div>
   </div>
 
   <!-- Testimonials -->
-  <div bind:this={testimonials} class="mt-64 px-10 flex flex-col items-center">
+  <div bind:this={testimonials} class="mt-50 px-10 flex flex-col items-center">
     <SectionHeading
       label="Testimonials"
       title="Loved by developers worldwide"
@@ -396,12 +440,41 @@
       />
     </div>
   </div>
+
+  <div class="relative mt-20 pb-10 w-screen overflow-hidden">
+    <CssGrid divClass="-skew-12 bg-transparent translate-x-50 translate-y-14" />
+
+    <div class={cn("flex justify-center")}>
+      <div class={cn("flex grow gap-2 items-center px-14", MAX_WIDTH_CLASS)}>
+        <CheckmarkSection
+          bind:divElt={proFeatures}
+          badgeLabel="Pro Features"
+          title={ProFeaturesTitle}
+          subtitle="Create stunning ready-to-use themes. Just provide an image or text prompt, and our AI does the rest."
+          btn1Label="Try it Free"
+          btn2Label="Get Pro"
+          check1Str="Theme Preview"
+          check2Str="Checkpoint Restoration"
+          check3Str="Image Uploads"
+        />
+
+        {@render MockChat()}
+      </div>
+    </div>
+
+    <div
+      class="pointer-events-none absolute top-0 h-16 w-full bg-linear-to-b from-background to-transparent"
+    ></div>
+    <div
+      class="pointer-events-none absolute bottom-0 h-10 w-full bg-linear-to-t from-background to-transparent"
+    ></div>
+  </div>
 </div>
 
 <!-- How it works -->
 <div
   bind:this={howItWorks}
-  class={cn("mt-64 px-10 flex flex-col items-center relative py-24 pb-8")}
+  class={cn("mt-54 px-10 flex flex-col items-center relative py-24 pb-8")}
 >
   <CssGrid />
 
@@ -412,7 +485,9 @@
   />
 
   <div class="flex items-center mt-22 mb-34">
-    <div class={cn("flex gap-10", MAX_WIDTH_CLASS)}>
+    <div
+      class={cn("flex flex-col md:flex-row gap-20 md:gap-10", MAX_WIDTH_CLASS)}
+    >
       <AnimatedCircle
         numLabel="01"
         title="Select Theme Preset"
@@ -535,5 +610,163 @@
   <div class="flex items-center gap-2">
     <span>Pro</span>
     <Gem class="size-2.5" />
+  </div>
+{/snippet}
+
+{#snippet VisThemEditorTitle()}
+  <h1 class="text-5xl font-extrabold tracking-tight">
+    Design Your <span class="italic font-light">Perfect</span>
+    <Circle class="inline size-13" /> shadcn/ui Theme
+  </h1>
+{/snippet}
+
+{#snippet ProFeaturesTitle()}
+  <h1 class="text-5xl font-extrabold tracking-tight">
+    Generate Themes With <span class="text-primary">AI</span>
+    in Seconds
+  </h1>
+{/snippet}
+
+<!-- Chat -->
+
+{#snippet MeMessage(message: string)}
+  <div class="flex flex-col gap-1 items-end ml-20">
+    <span class="p-4 border bg-card rounded-md w-fit">{message}</span>
+    <!-- Buttons -->
+    <div
+      class="flex items-center justify-end w-full opacity-0 hover:opacity-100 transition-all"
+    >
+      <Button size="icon" variant="ghost" class="rounded-sm">
+        <RefreshCcw />
+      </Button>
+      <Button size="icon" variant="ghost" class="rounded-sm">
+        <SquarePen />
+      </Button>
+      <Button size="icon" variant="ghost" class="rounded-sm"><Copy /></Button>
+    </div>
+  </div>
+{/snippet}
+{#snippet ThemMessage(message: string)}
+  <div class="flex flex-col gap-1 items-start mr-20">
+    <div class="flex items-start gap-2">
+      <div class="border rounded-full p-2 bg-primary text-primary-foreground">
+        <SlidersHorizontal class="size-4" />
+      </div>
+
+      <span class="rounded-md w-fit">{message}</span>
+    </div>
+
+    <!-- Buttons -->
+    <div
+      class="pl-8 flex items-center opacity-0 w-full hover:opacity-100 transition-all"
+    >
+      <Button size="icon" variant="ghost" class="rounded-sm">
+        <RefreshCcw />
+      </Button>
+      <Button size="icon" variant="ghost" class="rounded-sm"><Copy /></Button>
+    </div>
+  </div>
+{/snippet}
+
+{#snippet MockChat()}
+  <ScrollArea
+    class="hidden lg:flex h-120 translate-y-20 grow min-w-120 xl:min-w-160 rounded-md border backdrop-blur-xs"
+  >
+    <div class="px-4 pt-4 pb-40 flex flex-col gap-4">
+      <!-- TODO -->
+      {@render MeMessage("Generate a theme from this image.")}
+
+      {@render ThemMessage(
+        "I've generated a Midnight Bloom theme based on your image. It features deep purples and blues for a calming, modern look."
+      )}
+
+      {@render MeMessage("Can you generate a theme inspired by @Twitter?")}
+
+      {@render ThemMessage(
+        "Alright, I've whipped up a Twitter-inspired theme. Expect bright blues and clean contrasts for a social, energetic vibe."
+      )}
+
+      {@render MeMessage("How about a @Supabase theme?")}
+
+      {@render ThemMessage(
+        "I've generated a Supabase theme for you. It uses fresh greens and dark backgrounds for a modern, developer-friendly feel."
+      )}
+    </div>
+  </ScrollArea>
+{/snippet}
+
+{#snippet ColorPaletteThing()}
+  <div
+    class={cn(
+      "hidden lg:flex lg:flex-col min-w-130 xl:min-w-150 border border-border rounded-xl text-sm text-card-foreground from-background to-background/95 relative bg-linear-to-b  shadow-xl tracking-wider translate-y-20"
+    )}
+  >
+    <div class="flex gap-2 p-4">
+      <div class="size-3 rounded-full bg-red-500"></div>
+      <div class="size-3 rounded-full bg-yellow-500"></div>
+      <div class="size-3 rounded-full bg-green-500"></div>
+    </div>
+
+    <div class="w-full h-px bg-border"></div>
+
+    <div class="flex flex-col gap-4 px-6 py-7">
+      <div class="flex justify-between">
+        <span>Color Palette</span>
+        <Palette class="size-4 text-muted-foreground" />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <div
+          class="from-primary via-accent to-background h-24 w-full rounded-xl bg-linear-to-r"
+        ></div>
+        <div
+          class="flex justify-between text-xs text-muted-foreground font-light px-4"
+        >
+          <span>Primary</span>
+          <span>Accent</span>
+          <span>Background</span>
+        </div>
+      </div>
+
+      <div class="flex justify-between mt-2">
+        <span>Preview</span>
+        <Eye class="size-4 text-muted-foreground" />
+      </div>
+
+      <div class="flex gap-2 w-full">
+        <Button
+          class="flex-1 rounded-sm flex items-center justify-center gap-2"
+        >
+          <Copy />
+          Copy Code
+        </Button>
+
+        <Button
+          class="flex-1 rounded-sm flex items-center justify-center gap-2"
+          variant="outline"
+        >
+          <Circle />
+          oklch, hsl, rgb, hex
+        </Button>
+      </div>
+
+      <div
+        class="rounded-md border border-border bg-card text-card-foreground shadow w-full flex items-center gap-2 p-4"
+      >
+        <div
+          class="size-8 text-center rounded-full relative bg-accent border border-border"
+        >
+          <span
+            class={cn(ABSOLUTE_CENTER_CLASS, "text-xs text-accent-foreground")}
+          >
+            UI
+          </span>
+        </div>
+        <div class="flex flex-col">
+          <div class="bg-foreground/90 mb-2 h-2 w-24 rounded"></div>
+          <div class="bg-muted-foreground/60 h-2 w-16 rounded"></div>
+        </div>
+      </div>
+    </div>
   </div>
 {/snippet}

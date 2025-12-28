@@ -8,7 +8,7 @@
   let { label }: Props = $props();
 </script>
 
-<Badge variant="secondary" class="px-5 py-1.5 shadow-md">
+<Badge variant="secondary" class="px-5 py-1.5 shadow-md hover:bg-secondary/75">
   <Sparkle class="fill-primary stroke-none inline size-3" />
   {label}
 </Badge>

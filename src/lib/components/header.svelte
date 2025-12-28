@@ -218,5 +218,5 @@
 </header>
 
 {#snippet Underline(anchorClass: string)}
-  <div class={`${anchorClass} w-full h-[1.5px] bg-foreground opacity-0`}></div>
+  <div class={`${anchorClass} w-full h-[1.5px] bg-primary opacity-0`}></div>
 {/snippet}

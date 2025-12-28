@@ -3,6 +3,7 @@
   import { cn } from "$lib/utils";
   import { setTheme } from "./theme-watcher.svelte";
   import gsap from "gsap";
+  import { mode } from "mode-watcher";
 
   interface Props {
     name: string;
@@ -62,16 +63,16 @@
     onclick();
   }}
   class={cn(
-    "flex items-center justify-center gap-4 bg-muted w-40 py-1 rounded-sm cursor-pointer mr-2",
+    "flex items-center justify-center gap-4 bg-muted w-40 py-1 rounded-sm cursor-pointer mr-2 text-sm",
     { "border-3 border-border": current },
-    theme
-    // { dark: isDarkMode }
+    theme,
+    { dark: mode.current === "dark" }
   )}
 >
   <div class="flex items-center gap-1">
-    <div class="h-3 w-3 rounded-full bg-primary"></div>
-    <div class="h-3 w-3 rounded-full bg-secondary"></div>
-    <div class="h-3 w-3 rounded-full bg-accent"></div>
+    <div class="h-3 w-3 rounded-sm border bg-primary"></div>
+    <div class="h-3 w-3 rounded-sm border bg-secondary"></div>
+    <div class="h-3 w-3 rounded-sm border bg-accent"></div>
   </div>
   <span>{name}</span>
 </button>
