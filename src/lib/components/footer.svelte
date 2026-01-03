@@ -3,33 +3,35 @@
   import { cn } from "$lib/utils";
   import SiteLogo from "./site-logo.svelte";
   import gsap from "gsap";
+  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+  import { onMount } from "svelte";
 
-  const ANIMATION_EASE = "power1.inOut";
-  const ANIMATION_DURATION = 0.225;
-  function animateUnderlineEnter(anchorClass: string) {
-    gsap.fromTo(
-      `.${anchorClass}`,
-      { width: 0 },
-      {
-        width: "100%",
-        duration: ANIMATION_DURATION,
-        ease: ANIMATION_EASE,
-        onStart: () => {
-          gsap.to(`.${anchorClass}`, { opacity: 1 });
-        },
-      }
-    );
-  }
-  function animateUnderlineLeave(anchorClass: string) {
-    gsap.to(`.${anchorClass}`, {
-      width: 0,
-      duration: ANIMATION_DURATION,
-      ease: ANIMATION_EASE,
-      onComplete: () => {
-        gsap.to(`.${anchorClass}`, { opacity: 0 });
+  function scrollToDiv(className: string, offsetY = 0) {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: `.${className}`,
+        offsetY,
       },
+      ease: "power2.inOut",
     });
   }
+
+  const resourceLinks = [
+    { name: "Features", scrollDiv: "features-scroll-div", offsetY: -165 },
+    { name: "Examples", scrollDiv: "examples-scroll-div", offsetY: 0 },
+    { name: "Roadmap", scrollDiv: "roadmap-scroll-div", offsetY: -150 },
+  ];
+
+  const productLinks = [
+    { name: "GitHub", href: "https://github.com/Marcus-Adair" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/marcus-adair/" },
+    { name: "Contact", href: "mailto:marcus.a.adair@gmail.com" },
+  ];
+
+  onMount(() => {
+    gsap.registerPlugin(ScrollToPlugin);
+  });
 </script>
 
 <footer class="flex justify-center">
@@ -47,95 +49,27 @@
           visual theme editor for shadcn/ui components with Tailwind CSS
           support. Make components stand out.
         </span>
-        <!-- TODO: put logos -->
       </div>
 
       <nav class="flex flex-col gap-4">
         <span class="font-bold">Resources</span>
         <ul class="text-muted-foreground font-light flex flex-col gap-2 w-fit">
-          <li>
-            <a
-              class="hover:text-foreground transition-colors"
-              href="#features"
-              onmouseenter={() =>
-                animateUnderlineEnter("features-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("features-footer-underline")}
-            >
-              Features
-            </a>
-            {@render Underline("features-footer-underline")}
-          </li>
-          <li>
-            <a
-              class="hover:text-foreground transition-colors"
-              href="#examples"
-              onmouseenter={() =>
-                animateUnderlineEnter("examples-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("examples-footer-underline")}
-            >
-              Examples
-            </a>
-            {@render Underline("examples-footer-underline")}
-          </li>
-          <li>
-            <a
-              class="hover:text-foreground transition-colors"
-              href="#roadmap"
-              onmouseenter={() =>
-                animateUnderlineEnter("roadmap-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("roadmap-footer-underline")}
-            >
-              Roadmap
-            </a>
-            {@render Underline("roadmap-footer-underline")}
-          </li>
+          {#each resourceLinks as link}
+            <li>
+              {@render ScrollLink(link.name, link.scrollDiv, link.offsetY)}
+            </li>
+          {/each}
         </ul>
       </nav>
+
       <nav class="flex flex-col gap-4">
         <span class="font-bold">Product</span>
         <ul class="text-muted-foreground font-light flex flex-col gap-2 w-fit">
-          <li class="">
-            <a
-              class="hover:text-foreground transition-colors"
-              href="https://github.com/Marcus-Adair"
-              onmouseenter={() =>
-                animateUnderlineEnter("github-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("github-footer-underline")}
-            >
-              GitHub
-            </a>
-            {@render Underline("github-footer-underline")}
-          </li>
-          <li>
-            <a
-              class="hover:text-foreground transition-colors"
-              href="https://www.linkedin.com/in/marcus-adair/"
-              onmouseenter={() =>
-                animateUnderlineEnter("linkedin-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("linkedin-footer-underline")}
-            >
-              LinkedIn
-            </a>
-            {@render Underline("linkedin-footer-underline")}
-          </li>
-          <li>
-            <a
-              class="hover:text-foreground transition-colors"
-              href="mailto:marcus.a.adair@gmail.com"
-              onmouseenter={() =>
-                animateUnderlineEnter("contact-footer-underline")}
-              onmouseleave={() =>
-                animateUnderlineLeave("contact-footer-underline")}
-            >
-              Contact
-            </a>
-            {@render Underline("contact-footer-underline")}
-          </li>
+          {#each productLinks as link}
+            <li>
+              {@render ExternalLink(link.name, link.href)}
+            </li>
+          {/each}
         </ul>
       </nav>
     </div>
@@ -152,6 +86,25 @@
   </div>
 </footer>
 
-{#snippet Underline(anchorClass: string)}
-  <div class={`${anchorClass} w-fit h-[1.5px] bg-primary opacity-0`}></div>
+{#snippet ScrollLink(name: string, scrollDiv: string, offsetY: number)}
+  {@const className = name.toLowerCase()}
+
+  <button
+    class="hover:text-foreground hover:font-normal transition-all cursor-pointer text-left"
+    onclick={() => scrollToDiv(scrollDiv, offsetY)}
+  >
+    {name}
+  </button>
+{/snippet}
+
+{#snippet ExternalLink(name: string, href: string)}
+  {@const className = name.toLowerCase()}
+
+  <a
+    class="hover:text-foreground hover:font-normal transition-all w-fit"
+    {href}
+    target="_blank"
+  >
+    {name}
+  </a>
 {/snippet}

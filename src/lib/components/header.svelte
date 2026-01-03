@@ -3,12 +3,25 @@
   import { Button } from "./ui/button";
   import { toggleMode } from "mode-watcher";
   import gsap from "gsap";
+  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
   import SiteLogo from "./site-logo.svelte";
   import { cn } from "$lib/utils";
   import { onMount } from "svelte";
   import { MAX_WIDTH_CLASS } from "$lib/consts";
   // ---------------------------------------------------- //
 
+  function scrollToDiv(className: string, offsetY = 0) {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: `.${className}`,
+        offsetY, // positive = scroll less, negative = scroll more
+      },
+      ease: "power2.inOut",
+    });
+  }
+
+  // ----- //
   const ANIMATION_EASE = "power1.inOut";
   const ANIMATION_DURATION = 0.225;
   function animateUnderlineEnter(anchorClass: string) {
@@ -39,14 +52,22 @@
   let y = $state(0);
   let atTop = $derived(true);
 
+  const navItems = [
+    { name: "Examples", scrollDiv: "examples-scroll-div", offsetY: 0 },
+    { name: "Features", scrollDiv: "features-scroll-div", offsetY: -165 },
+    { name: "Pricing", scrollDiv: null, offsetY: 0 },
+    { name: "Roadmap", scrollDiv: "roadmap-scroll-div", offsetY: -150 },
+    { name: "FAQ", scrollDiv: "faq-scroll-div", offsetY: 85 },
+  ];
+
   onMount(() => {
+    gsap.registerPlugin(ScrollToPlugin);
+
     const onScroll = () => {
       y = window.scrollY;
       atTop = y === 0;
     };
     window.addEventListener("scroll", onScroll);
-
-    console.log("inside of onmount!!!!!");
 
     function animateInAnchors() {
       const tl = gsap.timeline();
@@ -110,7 +131,6 @@
   <div
     class={cn(
       "py-4 px-26 flex items-center w-full transition-shadow z-60",
-
       MAX_WIDTH_CLASS
     )}
   >
@@ -118,74 +138,11 @@
 
     <nav class="mx-auto">
       <ul class="flex justify-center gap-6 text-sm text-muted-foreground">
-        <li>
-          <div class="examples">
-            <a
-              class="examples hover:text-foreground transition-colors"
-              href="#examples"
-              onmouseenter={() => animateUnderlineEnter("examples-underline")}
-              onmouseleave={() => animateUnderlineLeave("examples-underline")}
-            >
-              Examples
-            </a>
-
-            {@render Underline("examples-underline")}
-          </div>
-        </li>
-        <li>
-          <div class="features">
-            <a
-              class="features hover:text-foreground transition-colors"
-              href="#features"
-              onmouseenter={() => animateUnderlineEnter("features-underline")}
-              onmouseleave={() => animateUnderlineLeave("features-underline")}
-            >
-              Features
-            </a>
-
-            {@render Underline("features-underline")}
-          </div>
-        </li>
-        <li>
-          <div class="pricing">
-            <a
-              class="pricing hover:text-foreground transition-colors"
-              href="#pricing"
-              onmouseenter={() => animateUnderlineEnter("pricing-underline")}
-              onmouseleave={() => animateUnderlineLeave("pricing-underline")}
-            >
-              Pricing
-            </a>
-
-            {@render Underline("pricing-underline")}
-          </div>
-        </li>
-        <li>
-          <div class="roadmap">
-            <a
-              class="roadmap hover:text-foreground transition-colors"
-              href="#roadmap"
-              onmouseenter={() => animateUnderlineEnter("roadmap-underline")}
-              onmouseleave={() => animateUnderlineLeave("roadmap-underline")}
-            >
-              Roadmap
-            </a>
-
-            {@render Underline("roadmap-underline")}
-          </div>
-        </li>
-        <li>
-          <div class="faq">
-            <a
-              class="faq hover:text-foreground transition-colors"
-              href="#faq"
-              onmouseenter={() => animateUnderlineEnter("faq-underline")}
-              onmouseleave={() => animateUnderlineLeave("faq-underline")}>FAQ</a
-            >
-
-            {@render Underline("faq-underline")}
-          </div>
-        </li>
+        {#each navItems as item}
+          <li>
+            {@render NavAnchor(item.name, item.scrollDiv, item.offsetY)}
+          </li>
+        {/each}
       </ul>
     </nav>
 
@@ -216,6 +173,28 @@
     </div>
   </div>
 </header>
+
+{#snippet NavAnchor(
+  name: string,
+  scrollDiv: string | null,
+  offsetY: number = 0
+)}
+  {@const className = name.toLowerCase()}
+  {@const underlineClass = `${className}-underline`}
+
+  <div class={className}>
+    <button
+      class="hover:text-foreground transition-colors cursor-pointer"
+      onmouseenter={() => animateUnderlineEnter(underlineClass)}
+      onmouseleave={() => animateUnderlineLeave(underlineClass)}
+      onclick={() => scrollDiv && scrollToDiv(scrollDiv, offsetY)}
+    >
+      {name}
+    </button>
+
+    {@render Underline(underlineClass)}
+  </div>
+{/snippet}
 
 {#snippet Underline(anchorClass: string)}
   <div class={`${anchorClass} w-full h-[1.5px] bg-primary opacity-0`}></div>

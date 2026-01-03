@@ -4,7 +4,6 @@
   import SectionHeading from "$lib/components/section-heading.svelte";
   import { Button } from "$lib/components/ui/button";
   import {
-    ArrowRight,
     ArrowRightLeft,
     BrainCircuit,
     Circle,
@@ -39,6 +38,8 @@
   import EmailInbox from "$lib/components/email-inbox.svelte";
   import ChartLine1 from "$lib/components/chart-line-1.svelte";
   import ComponentsStandOut from "$lib/components/components-stand-out.svelte";
+  import Header from "$lib/components/header.svelte";
+  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
   let visualThemeEditor: HTMLDivElement;
   let themePresets: HTMLDivElement;
@@ -55,6 +56,7 @@
   let loopTween2: gsap.core.Tween;
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollToPlugin);
 
     const BASE_SCROLL_TRIGGER = { start: "top+=45px bottom" };
     const BASE_FADE_IN_ANIMATION = {
@@ -127,7 +129,7 @@
   };
 </script>
 
-<div id="examples" class="">
+<div id="examples" class="examples-scroll-div">
   <div class="flex justify-center">
     <div class={cn("flex grow items-center px-14", MAX_WIDTH_CLASS)}>
       <CheckmarkSection
@@ -392,7 +394,7 @@
   </div>
 </div>
 
-<div bind:this={features} id="features">
+<div bind:this={features} id="features" class="features-scroll-div">
   <!-- Features -->
   <div class="mt-64 px-10 flex flex-col items-center">
     <SectionHeading
@@ -509,7 +511,7 @@
   </div>
 </div>
 
-<div bind:this={roadmap} id="roadmap">
+<div bind:this={roadmap} id="roadmap" class="roadmap-scroll-div">
   <div class="mt-60 px-10 flex flex-col items-center">
     <SectionHeading
       label="Roadmap"

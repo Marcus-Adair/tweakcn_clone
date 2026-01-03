@@ -10,7 +10,7 @@
 <div
   bind:this={faq}
   id="faq"
-  class="mt-64 mb-30 px-68 flex flex-col items-center"
+  class="mt-64 mb-30 px-68 flex flex-col items-center faq-scroll-div"
 >
   <SectionHeading
     label="FAQ"
