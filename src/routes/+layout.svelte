@@ -16,6 +16,10 @@
 
 <ModeWatcher defaultMode={"dark"} />
 <ThemeWatcher />
+
+<!-- Theme reveal overlay -->
+<div id="theme-overlay" class="fixed inset-0 pointer-events-none z-9999"></div>
+
 <div class="flex flex-col gap-2">
   <Header />
 

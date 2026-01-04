@@ -2670,3 +2670,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+#theme-overlay {
+  background: hsl(var(--background));
+  clip-path: circle(0px at var(--cx) var(--cy));
+}
