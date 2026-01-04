@@ -3,6 +3,12 @@
   import gsap from "gsap";
   import { onMount } from "svelte";
   import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+  import { cn } from "$lib/utils";
+
+  interface Props {
+    header?: boolean;
+  }
+  let { header }: Props = $props();
 
   onMount(() => {
     gsap.registerPlugin(ScrollToPlugin);
@@ -20,5 +26,7 @@
   }}
 >
   <SlidersHorizontal class="size-5" />
-  <span class="font-bold text-sm">tweakcn_clone</span>
+  <span class={cn("font-bold text-sm", header && "hidden lg:flex")}
+    >tweakcn_clone</span
+  >
 </button>

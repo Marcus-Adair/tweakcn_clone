@@ -41,7 +41,7 @@
       MAX_WIDTH_CLASS
     )}
   >
-    <div class="flex gap-36">
+    <div class="flex flex-col gap-8 md:flex-row md:gap-32 lg:gap-48 xl:gap-64">
       <div class="flex flex-col gap-4 max-w-112.5">
         <SiteLogo />
         <span class="text-muted-foreground font-light">
@@ -51,34 +51,40 @@
         </span>
       </div>
 
-      <nav class="flex flex-col gap-4">
-        <span class="font-bold">Resources</span>
-        <ul class="text-muted-foreground font-light flex flex-col gap-2 w-fit">
-          {#each resourceLinks as link}
-            <li>
-              {@render ScrollLink(link.name, link.scrollDiv, link.offsetY)}
-            </li>
-          {/each}
-        </ul>
-      </nav>
+      <div class="flex gap-36">
+        <nav class="flex flex-col gap-4">
+          <span class="font-bold">Resources</span>
+          <ul
+            class="text-muted-foreground font-light flex flex-col gap-2 w-fit"
+          >
+            {#each resourceLinks as link}
+              <li>
+                {@render ScrollLink(link.name, link.scrollDiv, link.offsetY)}
+              </li>
+            {/each}
+          </ul>
+        </nav>
 
-      <nav class="flex flex-col gap-4">
-        <span class="font-bold">Product</span>
-        <ul class="text-muted-foreground font-light flex flex-col gap-2 w-fit">
-          {#each productLinks as link}
-            <li>
-              {@render ExternalLink(link.name, link.href)}
-            </li>
-          {/each}
-        </ul>
-      </nav>
+        <nav class="flex flex-col gap-4">
+          <span class="font-bold">Product</span>
+          <ul
+            class="text-muted-foreground font-light flex flex-col gap-2 w-fit"
+          >
+            {#each productLinks as link}
+              <li>
+                {@render ExternalLink(link.name, link.href)}
+              </li>
+            {/each}
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <!-- Separator -->
     <div class="w-full bg-border h-px mt-6"></div>
 
     <div
-      class="flex justify-between text-xs font-light mt-7 mb-16 text-muted-foreground"
+      class="flex flex-col md:flex-row items-center justify-between gap-5 text-xs font-light mt-7 mb-16 text-muted-foreground"
     >
       <span>2025 tweakcn_clone - fun side project</span>
       <span>No Privacy Policy</span>

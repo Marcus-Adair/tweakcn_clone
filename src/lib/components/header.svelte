@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ChevronRight, Github, Moon, Sun } from "lucide-svelte";
+  import { ChevronRight, Github, Menu, Moon, Sun } from "lucide-svelte";
   import { Button } from "./ui/button";
   import { toggleMode } from "mode-watcher";
   import gsap from "gsap";
@@ -130,14 +130,16 @@
 >
   <div
     class={cn(
-      "py-4 px-26 flex items-center w-full transition-shadow z-60",
+      "py-4 px-8 md:px-18 lg:px-26 flex items-center justify-between  w-full transition-shadow z-60",
       MAX_WIDTH_CLASS
     )}
   >
-    <SiteLogo />
+    <SiteLogo header />
 
-    <nav class="mx-auto">
-      <ul class="flex justify-center gap-6 text-sm text-muted-foreground">
+    <nav class="mx-auto hidden md:flex">
+      <ul
+        class="flex justify-center gap-6 xl:gap-12 text-sm text-muted-foreground"
+      >
         {#each navItems as item}
           <li>
             {@render NavAnchor(item.name, item.scrollDiv, item.offsetY)}
@@ -146,7 +148,8 @@
       </ul>
     </nav>
 
-    <div class="flex items-center gap-4 justify-end">
+    <!-- Desktop Buttons -->
+    <div class="hidden md:flex items-center gap-4 justify-end">
       <div class="github">
         <Button variant="ghost" class="rounded-sm hover:bg-foreground/10">
           <Github href="https://github.com/Marcus-Adair/tweakcn_clone" />
@@ -171,6 +174,22 @@
         </Button>
       </div>
     </div>
+
+    <!-- Mobile Buttons -->
+    <div class="flex md:hidden items-center gap-4">
+      <Button
+        onclick={toggleMode}
+        variant="ghost"
+        size="icon"
+        class="rounded-xs"
+      >
+        <Sun class="size-4 scale-100 dark:scale-0" />
+        <Moon class="absolute size-4 scale-0 dark:scale-100" />
+      </Button>
+      <Button variant="ghost" size="icon" class="rounded-xs">
+        <Menu class="size-4" />
+      </Button>
+    </div>
   </div>
 </header>
 
@@ -184,7 +203,7 @@
 
   <div class={className}>
     <button
-      class="hover:text-foreground transition-colors cursor-pointer"
+      class="hover:text-foreground transition-colors cursor-pointer text-xs lg:text-sm"
       onmouseenter={() => animateUnderlineEnter(underlineClass)}
       onmouseleave={() => animateUnderlineLeave(underlineClass)}
       onclick={() => scrollDiv && scrollToDiv(scrollDiv, offsetY)}
