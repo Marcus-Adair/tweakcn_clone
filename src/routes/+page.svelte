@@ -152,6 +152,7 @@
 
   <!-- Theme presets -->
   <div
+    id="theme-presets"
     bind:this={themePresets}
     class={"mt-64 flex flex-col items-center animate-in-section"}
   >
