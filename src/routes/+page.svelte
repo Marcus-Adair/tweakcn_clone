@@ -455,7 +455,7 @@
           badgeLabel="Pro Features"
           title={ProFeaturesTitle}
           subtitle="Create stunning ready-to-use themes. Just provide an image or text prompt, and our AI does the rest."
-          btn1Label="Try it Free"
+          btn1Label="Try It Free"
           btn2Label="Get Pro"
           check1Str="Theme Preview"
           check2Str="Checkpoint Restoration"
