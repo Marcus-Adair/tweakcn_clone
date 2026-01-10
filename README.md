@@ -1,40 +1,58 @@
-# sv
+# TweakCN Clone
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+<p align="center">
+  <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white" alt="Svelte" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=black" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+</p>
 
-TODO: Hello world! Write me!
+## About
 
-## Creating a project
+A reproduction project of [tweakcn](https://tweakcn.com), a theme customization tool I use and love. Built to learn from great design, practice smooth animations, and explore dynamic theming systems.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Not a one-to-one remake, but something that is pretty close. I had fun with this!
 
-```sh
-# create a new project in the current directory
-npx sv create
+This project features:
 
-# create a new project in my-app
-npx sv create my-app
-```
+- 22 unique color themes with light/dark mode support
+- Smooth scroll animations and infinite carousels powered by GSAP
+- A clean, responsive landing page design
 
-## Developing
+## Tech Stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+TypeScript, SvelteKit, Tailwind CSS, GSAP
 
-```sh
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm (or pnpm/yarn)
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/Marcus-Adair/tweakcn_clone.git
+
+# Navigate to project
+cd tweakcn_clone
+
+# Install dependencies
+npm install
+
+# Start dev server
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-To create a production version of your app:
+### Build for Production
 
-```sh
+```bash
 npm run build
+npm run preview  # Preview the build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
