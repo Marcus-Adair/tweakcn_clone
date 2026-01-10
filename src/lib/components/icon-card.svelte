@@ -9,11 +9,18 @@
     title: string;
     description: string;
     badgeLabel?: string | Snippet;
+    card?: HTMLDivElement;
   }
-  let { icon, title, description, badgeLabel }: Props = $props();
+  let {
+    icon,
+    title,
+    description,
+    badgeLabel,
+    card = $bindable(),
+  }: Props = $props();
 
-  let card: HTMLDivElement;
   function animate(animIn: boolean) {
+    if (!card) return;
     const toValue = animIn ? -10 : 0;
     const scaleValue = animIn ? 1.01 : 1;
 

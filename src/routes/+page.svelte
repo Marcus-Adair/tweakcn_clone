@@ -54,6 +54,14 @@
   let loopTween1: gsap.core.Tween;
   let infiniteRow2: HTMLDivElement;
   let loopTween2: gsap.core.Tween;
+
+  // Roadmap IconCard refs
+  let roadmapCard1: HTMLDivElement;
+  let roadmapCard2: HTMLDivElement;
+  let roadmapCard3: HTMLDivElement;
+  let roadmapCard4: HTMLDivElement;
+  let roadmapCard5: HTMLDivElement;
+  let roadmapCard6: HTMLDivElement;
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
@@ -98,7 +106,38 @@
       repeat: -1,
       ease: "linear",
     });
+
+    // Shared IconCard animation config
+    const ICON_CARD_SCROLL_TRIGGER = { start: "top+=600px bottom" };
+    const ICON_CARD_ANIMATION = {
+      opacity: 0,
+      y: 50,
+      duration: 0.5,
+      ease: "power2.out",
+    };
+    const ICON_CARD_STAGGER = 0.12;
+
+    // Roadmap IconCards staggered fade-in animation
+    const roadmapCards = [
+      roadmapCard1,
+      roadmapCard2,
+      roadmapCard3,
+      roadmapCard4,
+      roadmapCard5,
+      roadmapCard6,
+    ];
+
+    const roadmapTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: roadmap,
+        ...ICON_CARD_SCROLL_TRIGGER,
+      },
+    });
+    roadmapCards.forEach((card, index) => {
+      roadmapTl.from(card, ICON_CARD_ANIMATION, index * ICON_CARD_STAGGER);
+    });
   });
+
   const pauseLoop1 = () => {
     gsap.to(loopTween1, {
       timeScale: 0,
@@ -529,18 +568,21 @@
       )}
     >
       <IconCard
+        bind:card={roadmapCard1}
         icon={Palette}
         title="Global Theme Editor"
         badgeLabel="Done"
         description="Create and manage complete themes with presets fr your entire application."
       />
       <IconCard
+        bind:card={roadmapCard2}
         icon={ArrowRightLeft}
         title="Theme Import/Export"
         badgeLabel="Done"
         description="Save and share your custom themes with others."
       />
       <IconCard
+        bind:card={roadmapCard3}
         icon={Layers}
         title="AI Theme Generation"
         badgeLabel="In Progress"
@@ -548,18 +590,21 @@
       />
 
       <IconCard
+        bind:card={roadmapCard4}
         icon={Users}
         title="Community Themes"
         badgeLabel="Coming Soon"
         description="Allow users to submit themes, vote on the best designs."
       />
       <IconCard
+        bind:card={roadmapCard5}
         icon={Folder}
         title="Multi-Project Management"
         badgeLabel="Planned"
         description="Save and manage multiple theme projects, making it easy to switch between designs."
       />
       <IconCard
+        bind:card={roadmapCard6}
         icon={Grid3X3}
         title="Smart Theme Generator"
         badgeLabel="Planned"
