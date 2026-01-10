@@ -13,7 +13,7 @@
 
 A reproduction project of [tweakcn](https://tweakcn.com), a theme customization tool I use and love. Built to learn from great design, practice smooth animations, and explore dynamic theming systems.
 
-Not a one-to-one remake, but something that is pretty close. I had fun with this!
+Not a one-to-one remake, but something that is pretty close. I had fun with this! Visit it [here](marcus-adair.github.io/tweakcn_clone)!
 
 This project features:
 
