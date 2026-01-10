@@ -151,7 +151,12 @@
     <!-- Desktop Buttons -->
     <div class="hidden md:flex items-center gap-4 justify-end">
       <div class="github">
-        <Button variant="ghost" class="rounded-sm hover:bg-foreground/10">
+        <Button
+          variant="ghost"
+          class="rounded-sm hover:bg-foreground/10"
+          href="https://github.com/Marcus-Adair"
+          target="_blank"
+        >
           <Github href="https://github.com/Marcus-Adair/tweakcn_clone" />
           8.6k
         </Button>
@@ -169,7 +174,11 @@
         </Button>
       </div>
       <div class="try-it-now">
-        <Button class="hover:scale-105 ease-in-out duration-200">
+        <Button
+          class="hover:scale-105 ease-in-out duration-200"
+          href="https://tweakcn.com/editor/theme"
+          target="_blank"
+        >
           Try It Now <ChevronRight />
         </Button>
       </div>
