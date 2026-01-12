@@ -55,6 +55,14 @@
   let infiniteRow2: HTMLDivElement;
   let loopTween2: gsap.core.Tween;
 
+  // Features IconCard refs
+  let featuresCard1: HTMLDivElement;
+  let featuresCard2: HTMLDivElement;
+  let featuresCard3: HTMLDivElement;
+  let featuresCard4: HTMLDivElement;
+  let featuresCard5: HTMLDivElement;
+  let featuresCard6: HTMLDivElement;
+
   // Roadmap IconCard refs
   let roadmapCard1: HTMLDivElement;
   let roadmapCard2: HTMLDivElement;
@@ -135,6 +143,26 @@
     });
     roadmapCards.forEach((card, index) => {
       roadmapTl.from(card, ICON_CARD_ANIMATION, index * ICON_CARD_STAGGER);
+    });
+
+    // Features IconCards staggered fade-in animation
+    const featuresCards = [
+      featuresCard1,
+      featuresCard2,
+      featuresCard3,
+      featuresCard4,
+      featuresCard5,
+      featuresCard6,
+    ];
+
+    const featuresTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: features,
+        ...ICON_CARD_SCROLL_TRIGGER,
+      },
+    });
+    featuresCards.forEach((card, index) => {
+      featuresTl.from(card, ICON_CARD_ANIMATION, index * ICON_CARD_STAGGER);
     });
   });
 
@@ -452,31 +480,37 @@
       )}
     >
       <IconCard
+        bind:card={featuresCard1}
         icon={Paintbrush}
         title="Color Control"
         description="Customize background, text, and border colors with an intuitive color picker interface. We even integrate with the latest Tailwind v4 color palette."
       />
       <IconCard
+        bind:card={featuresCard2}
         icon={FileCode}
         title="Typography Settings"
         description="Fine-tune font size, weight, and text transform to create the perfect look."
       />
       <IconCard
+        bind:card={featuresCard3}
         icon={Code}
         title="Tailwind v4 & v3 Support"
         description="Seamlessly switch between Tailwind v4 and v3, with support for multiple color formats including OKLCH & HSL."
       />
       <IconCard
+        bind:card={featuresCard4}
         icon={Layers}
         title="Tailwind Properties"
         description="Fine-tune every aspect of your components with precise control over radius, spacing, shadows, and other Tailwind properties."
       />
       <IconCard
+        bind:card={featuresCard5}
         icon={Contrast}
         title="Contrast Checker"
         description="Ensure your designs meet accessibility standards with built-in contrast ratio checking between text and background colors."
       />
       <IconCard
+        bind:card={featuresCard6}
         icon={BrainCircuit}
         title="AI Theme Generation"
         badgeLabel={ProBadgeLabel}
